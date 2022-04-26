@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">Mufta</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Popular Discounts</string>
+    <string name="title_notifications">Profile</string>
+    <string name="text">Free Adobe Illustrator Course For Beginners Udemy Coupon</string>
+    <string name="todo">Background</string>
+    <string name="restaurant_image">Restaurant image</string>
+    <string name="start_date">Start Date:</string>
+    <string name="_02_07_2022">02/07/2022</string>
+    <string name="end_date">End Date:</string>
+    <string name="_02_08_2022">02/07/2022</string>
+    <string name="contact">Contact</string>
+    <string name="title">FATHERS DAY EXCLUSIVE DEAL! Bring your father to M27 for a buy one get one surprise!</string>
+    <string name="description">Offer exclusively for customers bringing their father.Add four Pcs garlic bread for Rs.199 for sharing more love!</string>
+    <string name="image">image</string>
+    <string name="username">Hello Kapil!</string>
+    <string name="all_the_best_ndiscounts_are_nhere">All the best \nDiscounts are \nhere!</string>
+    <string name="refer">Refer your friends and\n earn more discounts *</string>
+    <string name="popular_discounts">Popular Discounts</string>
+    <string name="see_all">See All</string>
+    <string name="profile">Profile</string>
+    <string name="minimum_password"><![CDATA[>Password too short, enter minimum 6 characters!]]></string>
+    <string name="auth_failed">Authentication failed, check your email and password or Register</string>
+    <string name="default_web_client_id" />
+    <string name="expires_on">Expires on:</string>
+    <string name="_5_4_2022">5-4-2022</string>
+</resources>

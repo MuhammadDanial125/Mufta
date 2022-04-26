@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+
+        <item name="android:forceDarkAllowed">false</item>
+        <item name="colorPrimary">@color/option1</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:fontFamily">@font/calibri</item>
+        <item name="android:windowBackground">@color/frutorial_title</item>
+        <item name="android:textColorPrimary">@color/colorPrimary</item>
+        <item name="android:windowContentTransitions">true</item>
+
+        <!--        <item name="colorControlNormal">@color/colorPrimaryDark</item>-->
+        <item name="android:textColorSecondary">@color/grey_light</item>
+        <item name="colorControlActivated">@color/colorAccent</item>
+
+
+    </style>
+</resources>
