@@ -2,7 +2,7 @@
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".ui.activities.signin">
 
@@ -131,11 +131,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="twit"
             android:src="@drawable/twit_pic" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:onClick="face"
             android:layout_weight="1"
             android:src="@drawable/fb" />
 
@@ -144,6 +146,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:onClick="googl"
             android:src="@drawable/googleg_standard_color_18" />
     </LinearLayout>
 

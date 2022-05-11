@@ -51,7 +51,6 @@ public class DashboardFragment extends Fragment {
         binding.rvCardview.setAdapter(foodadapter);
         query = FirebaseDatabase.getInstance().getReference().child("Discounts").child("Other Discounts").orderByChild("category");
         query.addListenerForSingleValueEvent(valueEventListener);
-
         dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
         return root;
     }

@@ -125,4 +125,18 @@
         <item>Islamabad</item>
         <item>KPK</item>
     </array>
+    <array name="categories">
+        <item>Business</item>
+        <item>Personal Development</item>
+        <item>Finance &amp; Accounting</item>
+        <item>IT &amp; Software</item>
+        <item>Health &amp; Fitness</item>
+        <item>Office Productivity</item>
+        <item>Development</item>
+        <item>Design</item>
+        <item>Photography &amp; Video</item>
+        <item>Teaching &amp; Academics</item>
+        <item>Lifestyle</item>
+        <item>Music</item>
+    </array>
 </resources>

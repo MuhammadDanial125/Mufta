@@ -26,7 +26,7 @@ public class signup extends AppCompatActivity {
     private EditText inputEmail, inputPassword, name;
     ProgressBar progressBar;
     FirebaseAuth auth;
-
+    Button skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +42,15 @@ public class signup extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         name = (EditText) findViewById(R.id.eded);
-
+        skip = (Button) findViewById(R.id.skipp);
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(signup.this,MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,5 +116,21 @@ public class signup extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         progressBar.setVisibility(View.GONE);
+    }
+
+    public void twitter(View view) {
+        click();
+    }
+
+    public void facebook(View view) {
+        click();
+    }
+
+    public void google(View view) {
+        click();
+    }
+
+    public void click() {
+        Toast.makeText(this, "We are working on it", Toast.LENGTH_SHORT).show();
     }
 }

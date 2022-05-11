@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardvieww"
-    android:layout_width="310dp"
+    android:layout_width="match_parent"
     android:layout_height="430dp"
     android:layout_marginStart="10dp"
     android:layout_marginTop="25dp"
@@ -49,22 +49,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_website_24"
                 android:drawablePadding="5dp"
                 android:text="Udemy"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_website_24" />
 
             <TextView
                 android:id="@+id/language"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_translate_24"
                 android:drawablePadding="5dp"
                 android:text="English"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_translate_24" />
         </LinearLayout>
 
         <LinearLayout
@@ -78,11 +78,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_hourglass_bottom_24"
                 android:drawablePadding="5dp"
                 android:text="@string/expires_on"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_hourglass_bottom_24" />
 
             <TextView
                 android:id="@+id/expires"
@@ -105,22 +105,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_access_time_24"
                 android:drawablePadding="5dp"
                 android:text="2 hours"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_access_time_24" />
 
             <TextView
                 android:id="@+id/titlee"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_check_circle_24"
                 android:drawablePadding="5dp"
                 android:text="Design Tools"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                app:drawableStartCompat="@drawable/ic_baseline_check_circle_24" />
         </LinearLayout>
 
         <LinearLayout
@@ -136,22 +136,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="10dp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_monetization_on_24"
+                android:drawablePadding="5dp"
                 android:text="0$"
+                android:textAllCaps="true"
                 android:textColor="@color/color2"
                 android:textSize="18sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                app:drawableStartCompat="@drawable/ic_baseline_discount_24" />
 
             <TextView
                 android:id="@+id/orignalprice"
                 android:layout_width="match_parent"
-                android:layout_height="15dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="-10dp"
                 android:layout_weight="1"
-                android:drawableStart="@drawable/ic_baseline_monetization_on_24"
                 android:text="0$"
                 android:textColor="@color/colorAccent"
-                android:textSize="13sp"
-                android:textStyle="bold" />
+                android:textSize="10sp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp" />
 
         </LinearLayout>
 

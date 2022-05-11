@@ -127,7 +127,7 @@
             android:layout_marginTop="30dp"
             android:layout_marginEnd="15dp"
             android:layout_marginBottom="9dp"
-            android:textAlignment="center"
+            android:textAlignment="textStart"
             android:text="Discount description"
             android:textColor="@color/black"
             android:textSize="17sp"

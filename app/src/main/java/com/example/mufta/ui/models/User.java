@@ -7,16 +7,46 @@ public class User {
     private String emailid;
     public String profileImage;
     private String token;
+    private String password;
+    private String phonenumber;
+    private String city;
 
     public User() {
 
     }
 
-    public User(String uid, String name, String emailid, String profileImage) {
+    public User(String uid, String name, String emailid, String profileImage, String password, String phonenumber, String city) {
         this.uid = uid;
         this.name = name;
         this.emailid = emailid;
         this.profileImage = profileImage;
+        this.password = password;
+        this.phonenumber = phonenumber;
+        this.city = city;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(String phonenumber) {
+        this.phonenumber = phonenumber;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getUid() {

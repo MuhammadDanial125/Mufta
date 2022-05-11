@@ -77,9 +77,20 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
+                String password = binding.passwordBox.getText().toString();
+                String phonenumber = binding.numberBox.getText().toString();
+                String city = binding.cityBox.getText().toString();
                 String name = binding.nameBox.getText().toString();
                 if (name.isEmpty()) {
                     binding.nameBox.setError("Please type a name");
+                    return;
+                }
+                if (password.isEmpty()) {
+                    binding.nameBox.setError("Please type a password");
+                    return;
+                }
+                if (city.isEmpty()) {
+                    binding.nameBox.setError("Please enter your city");
                     return;
                 }
                 if (selectedImage != null) {
@@ -95,7 +106,10 @@ public class NotificationsFragment extends Fragment {
                                         String uid = auth.getUid();
                                         String email = auth.getCurrentUser().getEmail();
                                         String name = binding.nameBox.getText().toString();
-                                        User user = new User(uid, name, email, imageUrl);
+                                        String password = binding.passwordBox.getText().toString();
+                                        String phonenumber = binding.numberBox.getText().toString();
+                                        String city = binding.cityBox.getText().toString();
+                                        User user = new User(uid, name, email, imageUrl, password, phonenumber, city);
                                         database.getReference()
                                                 .child("users")
                                                 .child(uid)
@@ -114,9 +128,9 @@ public class NotificationsFragment extends Fragment {
                     });
                 } else {
                     String uid = auth.getUid();
-                    String phone = auth.getCurrentUser().getPhoneNumber();
+                    String email = auth.getCurrentUser().getEmail();
 
-                    User user = new User(uid, name, phone, "No Image");
+                    User user = new User(uid, name, email, "No Image", password, phonenumber, city);
 
                     database.getReference()
                             .child("users")
@@ -128,6 +142,7 @@ public class NotificationsFragment extends Fragment {
                                     Toast.makeText(requireActivity().getApplicationContext(), "Profile Updated", Toast.LENGTH_SHORT).show();
 //                                    Intent intent = new Intent(UpdateProfile.this, MainActivity.class);
 //                                    startActivity(intent);
+                                    dailog.dismiss();
 //                                    finish();
                                 }
                             });
@@ -140,19 +155,24 @@ public class NotificationsFragment extends Fragment {
 
     public void getdata() {
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference reference = database.getReference().child("users").child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()));
+        DatabaseReference reference = database.getReference().child("users").child((FirebaseAuth.getInstance().getUid()));
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     User user = snapshot.getValue(User.class);
                     binding.nameBox.setHint(user.name);
+                    binding.emailBox.setHint(user.getEmailid());
+                    binding.passwordBox.setHint(user.getPassword());
+                    binding.numberBox.setHint(user.getPhonenumber());
+                    binding.cityBox.setHint(user.getCity());
                     Glide.with(NotificationsFragment.this).load(user.profileImage)
                             .placeholder(R.drawable.avatar)
                             .into(binding.imageView);
                     dailog.dismiss();
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
