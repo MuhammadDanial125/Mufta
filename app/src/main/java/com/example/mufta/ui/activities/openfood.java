@@ -48,8 +48,7 @@ public class openfood extends AppCompatActivity {
         plusupvote = findViewById(R.id.plusupvote);
         layout = findViewById(R.id.l);
 
-        SharedPreferences prefs = getSharedPreferences("city", MODE_PRIVATE);
-        String resID = prefs.getString("resId", String.valueOf(0));
+
 
         title.setText(intent.getStringExtra("Title"));
         Description.setText(intent.getStringExtra("Description"));

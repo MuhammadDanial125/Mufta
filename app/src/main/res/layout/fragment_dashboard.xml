@@ -55,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:padding="15dp"
                         android:text="@string/all_the_best_ndiscounts_are_nhere"
-                        android:textColor="@color/whiteBodyColor"
+                        android:textColor="@color/black"
                         android:textSize="25sp"
                         android:textStyle="bold" />
 
@@ -100,7 +100,7 @@
                     android:paddingTop="5dp"
                     android:text="@string/refer"
                     android:textAlignment="center"
-                    android:textColor="@color/whiteTextColor"
+                    android:textColor="@color/black"
                     android:textSize="13sp" />
 
             </LinearLayout>

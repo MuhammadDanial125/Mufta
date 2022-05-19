@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -49,7 +50,8 @@ public class fooddiscounts extends AppCompatActivity {
         setContentView(R.layout.activity_fooddiscounts2);
         Objects.requireNonNull(getSupportActionBar()).hide();
         back = findViewById(R.id.back);
-
+        SharedPreferences prefs = getSharedPreferences("city", MODE_PRIVATE);
+        String resID = prefs.getString("resId", String.valueOf(0));
         Intent intent = getIntent();
         category = intent.getStringExtra("category");
 
