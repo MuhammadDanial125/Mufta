@@ -77,7 +77,6 @@ public class NotificationsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
-                String password = binding.passwordBox.getText().toString();
                 String phonenumber = binding.numberBox.getText().toString();
                 String city = binding.cityBox.getText().toString();
                 String name = binding.nameBox.getText().toString();
@@ -85,10 +84,7 @@ public class NotificationsFragment extends Fragment {
                     binding.nameBox.setError("Please type a name");
                     return;
                 }
-                if (password.isEmpty()) {
-                    binding.nameBox.setError("Please type a password");
-                    return;
-                }
+
                 if (city.isEmpty()) {
                     binding.nameBox.setError("Please enter your city");
                     return;
@@ -106,10 +102,9 @@ public class NotificationsFragment extends Fragment {
                                         String uid = auth.getUid();
                                         String email = auth.getCurrentUser().getEmail();
                                         String name = binding.nameBox.getText().toString();
-                                        String password = binding.passwordBox.getText().toString();
                                         String phonenumber = binding.numberBox.getText().toString();
                                         String city = binding.cityBox.getText().toString();
-                                        User user = new User(uid, name, email, imageUrl, password, phonenumber, city);
+                                        User user = new User( name, email, imageUrl, phonenumber, city);
                                         database.getReference()
                                                 .child("users")
                                                 .child(uid)
@@ -130,7 +125,7 @@ public class NotificationsFragment extends Fragment {
                     String uid = auth.getUid();
                     String email = auth.getCurrentUser().getEmail();
 
-                    User user = new User(uid, name, email, "No Image", password, phonenumber, city);
+                    User user = new User( name, email, "No Image", phonenumber, city);
 
                     database.getReference()
                             .child("users")
@@ -163,7 +158,6 @@ public class NotificationsFragment extends Fragment {
                     User user = snapshot.getValue(User.class);
                     binding.nameBox.setHint(user.name);
                     binding.emailBox.setHint(user.getEmailid());
-                    binding.passwordBox.setHint(user.getPassword());
                     binding.numberBox.setHint(user.getPhonenumber());
                     binding.cityBox.setHint(user.getCity());
                     Glide.with(NotificationsFragment.this).load(user.profileImage)

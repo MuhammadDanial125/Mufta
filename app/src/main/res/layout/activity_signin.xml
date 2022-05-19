@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
+    android:background="@drawable/gradiant_white_orange"
     android:orientation="vertical"
     tools:context=".ui.activities.signin">
 
@@ -13,8 +13,7 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/welcome" />
+            android:src="@drawable/signinbg" />
 
 
     <androidx.cardview.widget.CardView
@@ -28,8 +27,22 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="25dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:text="SIGN IN"
+                android:fontFamily="@font/poppins"
+                android:textStyle="bold"
+                android:textColor="#000"
+                android:textSize="20sp"
+              ></TextView>
 
 
             <EditText
@@ -37,24 +50,28 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="5dp"
-                android:hint="Enter your email address"
-                android:inputType="textPersonName"
+                android:hint="muftainfo@gmail.com"
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
                 android:padding="10dp"
-                android:textSize="23sp" />
+                android:textSize="23sp"
+                android:backgroundTint="@color/orange"/>
 
 
             <EditText
+                android:backgroundTint="@color/orange"
                 android:id="@+id/pasword"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="5dp"
-                android:hint="Enter your password"
+                android:hint="Password"
+                android:fontFamily="@font/poppins"
                 android:inputType="textPassword"
                 android:padding="10dp"
                 android:textSize="23sp" />
@@ -66,6 +83,7 @@
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="17sp"
+                android:paddingRight="15dp"
                 android:textStyle="bold" />
 
             <androidx.appcompat.widget.AppCompatButton
@@ -73,9 +91,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="45dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="15dp"
                 android:layout_marginEnd="45dp"
-                android:layout_marginBottom="5dp"
+                android:layout_marginBottom="25dp"
                 android:background="@drawable/roundbtn"
                 android:padding="10dp"
                 android:text="Log in"

@@ -25,6 +25,14 @@ public class User {
         this.city = city;
     }
 
+    public User(String name, String emailid, String profileImage, String phonenumber, String city) {
+        this.name = name;
+        this.emailid = emailid;
+        this.profileImage = profileImage;
+        this.phonenumber = phonenumber;
+        this.city = city;
+    }
+
     public String getPassword() {
         return password;
     }

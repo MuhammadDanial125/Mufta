@@ -38,6 +38,7 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
     private ArrayList<homeClass> homeClasses;
     private CourseRecyclerAdapter adapter;
     String s1;
+    int spinnerLastPosition;
 
     public HomeFragment() {
 
@@ -49,13 +50,18 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
         mcontext = this.getContext();
         View view = binding.getRoot();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        SharedPreferences reader = getActivity().getSharedPreferences("city", MODE_PRIVATE);
+        spinnerLastPosition = reader.getInt("spinnerLastPositionSaved",1);
+        binding.edtSearch.setSelection(spinnerLastPosition);
         SharedPreferences.Editor editor = this.getActivity().getSharedPreferences("city", MODE_PRIVATE).edit();
         binding.edtSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 s1 = binding.edtSearch.getSelectedItem().toString();
-                Toast.makeText(mcontext, "" + s1, Toast.LENGTH_SHORT).show();
+                spinnerLastPosition = binding.edtSearch.getSelectedItemPosition();
+                Toast.makeText(mcontext, "City is Changed", Toast.LENGTH_SHORT).show();
                 editor.putString("resId", s1);
+                editor.putInt("spinnerLastPositionSaved",spinnerLastPosition);
                 editor.apply();
             }
 
