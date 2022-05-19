@@ -10,6 +10,7 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -60,6 +61,9 @@ public class educationdiscounts extends AppCompatActivity {
         query = FirebaseDatabase.getInstance().getReference().child("Discounts").child("Education");
         query.addListenerForSingleValueEvent(valueEventListener);
         string = spinner.getSelectedItem().toString();
+        SharedPreferences prefs = getSharedPreferences("city", MODE_PRIVATE);
+        String resID = prefs.getString("resId", String.valueOf(0));
+        Toast.makeText(this, "" + resID, Toast.LENGTH_SHORT).show();
     }
 
     ValueEventListener valueEventListener = new ValueEventListener() {

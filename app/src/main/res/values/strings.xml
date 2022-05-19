@@ -120,10 +120,37 @@
     <string name="expires_on">Expires on:</string>
     <string name="_5_4_2022">5-4-2022</string>
     <array name="cities">
-        <item>Gujarat</item>
         <item>Karachi</item>
+        <item>Lahore</item>
+        <item>Faisalabad</item>
+        <item>Rawalpindi</item>
+        <item>Kasur</item>
+        <item>Larkana</item>
+        <item>Gujrat</item>
+        <item>Mardan</item>
+        <item>Sheikhupura</item>
+        <item>Kandhkot</item>
+        <item>Sukkur</item>
+        <item>Bahawalpur</item>
+        <item>Sialkot</item>
+        <item>Sargodha</item>
+        <item>Quetta</item>
         <item>Islamabad</item>
-        <item>KPK</item>
+        <item>Peshawar</item>
+        <item>Hyderabad</item>
+        <item>Gujranwala</item>
+        <item>Multan</item>
+        <item>Kamoke</item>
+        <item>Nawabshah</item>
+        <item>Chiniot</item>
+        <item>Mirpur Khas</item>
+        <item>Mingora</item>
+        <item>Dera Ghazi Khan</item>
+        <item>Wah Cantonment</item>
+        <item>Okara</item>
+        <item>Sahiwal</item>
+        <item>Rahim Yar Khan</item>
+
     </array>
     <array name="categories">
         <item>Business</item>

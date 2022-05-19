@@ -1,6 +1,9 @@
 package com.example.mufta.ui.home;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -8,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,6 +37,7 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
     private Context mcontext;
     private ArrayList<homeClass> homeClasses;
     private CourseRecyclerAdapter adapter;
+    String s1;
 
     public HomeFragment() {
 
@@ -44,7 +49,21 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
         mcontext = this.getContext();
         View view = binding.getRoot();
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+        SharedPreferences.Editor editor = this.getActivity().getSharedPreferences("city", MODE_PRIVATE).edit();
+        binding.edtSearch.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                s1 = binding.edtSearch.getSelectedItem().toString();
+                Toast.makeText(mcontext, "" + s1, Toast.LENGTH_SHORT).show();
+                editor.putString("resId", s1);
+                editor.apply();
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
 
         StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(2,
                 StaggeredGridLayoutManager.VERTICAL);

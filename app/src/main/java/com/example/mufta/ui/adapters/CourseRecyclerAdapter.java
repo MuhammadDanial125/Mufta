@@ -50,33 +50,6 @@ public class CourseRecyclerAdapter extends RecyclerView.Adapter<CourseRecyclerAd
         viewHolder.itemView.setTag(pos);
 
         viewHolder.setPostImage(mData.get(i));
-
-//        viewHolder.itemCardBinding.stagItemCourse.setText(mData.get(i).getCourseTitle());
-//        viewHolder.itemCardBinding.stagItemQuantityCourse.setText(mData.get(i).getQuantityCourses());
-
-        //1st intent 2 methods
-//        if (i%2==1){
-//            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.card_item.getLayoutParams();
-//            cardViewMarginParams.setMargins(dpToPx(8), dpToPx(16), 0, 0);
-//            viewHolder.card_item.requestLayout();
-//        }
-//        if (i==1){
-//            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.card_item.getLayoutParams();
-//            cardViewMarginParams.setMargins(dpToPx(8), dpToPx(32), 0, 0);
-//            viewHolder.card_item.requestLayout();
-//        }
-
-        //2nd intent card only bottom margin in xml  and only top margin in adapter- it works
-
-//        if (i%2==1){
-//
-//            int dimenTopPixeles = getDimensionValuePixels(R.dimen.staggedmarginbottom);
-//            int dimenleftPixeles = getDimensionValuePixels(R.dimen.horizontal_card);
-//            ViewGroup.MarginLayoutParams cardViewMarginParams = (ViewGroup.MarginLayoutParams) viewHolder.itemCardBinding.cardItem.getLayoutParams();
-//            cardViewMarginParams.setMargins(dimenleftPixeles, dimenTopPixeles, 0, 0);
-//            viewHolder.itemCardBinding.cardItem.requestLayout();
-//        }
-
 //      viewHolder.card_item.setBackgroundColor(mContext.getResources().getColor(R.color.color1));
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
