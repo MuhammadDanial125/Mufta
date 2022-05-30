@@ -56,10 +56,10 @@ public class NotificationsFragment extends Fragment {
 
 //        Bundle bundle = getIntent().getExtras();
 //        String key = bundle.getString("key");
-        getdata();
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
+
 
         dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
 

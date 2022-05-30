@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.mufta.R;
@@ -26,7 +27,7 @@ public class signup extends AppCompatActivity {
     private EditText inputEmail, inputPassword, name;
     ProgressBar progressBar;
     FirebaseAuth auth;
-    Button skip;
+    TextView skip;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class signup extends AppCompatActivity {
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         name = (EditText) findViewById(R.id.eded);
-        skip = (Button) findViewById(R.id.skipp);
+        skip = findViewById(R.id.skipp);
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -60,7 +60,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_weight="5"
                     android:padding="5dp"
-                    android:src="@drawable/location_ic"
+                    android:src="@drawable/ic_baseline_location_city_24"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     ></ImageView>

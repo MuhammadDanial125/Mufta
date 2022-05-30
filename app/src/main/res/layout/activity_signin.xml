@@ -13,7 +13,8 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:src="@drawable/signinbg" />
+            android:padding="40dp"
+            android:src="@drawable/logofororange" />
 
 
     <androidx.cardview.widget.CardView
@@ -37,12 +38,11 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginBottom="5dp"
+                android:fontFamily="@font/roboto_bold"
                 android:text="SIGN IN"
-                android:fontFamily="@font/poppins"
-                android:textStyle="bold"
                 android:textColor="#000"
                 android:textSize="20sp"
-              ></TextView>
+                android:textStyle="bold"></TextView>
 
 
             <EditText
@@ -57,7 +57,7 @@
                 android:fontFamily="@font/poppins"
                 android:inputType="textEmailAddress"
                 android:padding="10dp"
-                android:textSize="23sp"
+                android:textSize="18sp"
                 android:backgroundTint="@color/orange"/>
 
 
@@ -74,7 +74,7 @@
                 android:fontFamily="@font/poppins"
                 android:inputType="textPassword"
                 android:padding="10dp"
-                android:textSize="23sp" />
+                android:textSize="18sp" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -83,6 +83,7 @@
                 android:textAlignment="viewEnd"
                 android:textColor="@color/black"
                 android:textSize="17sp"
+                android:fontFamily="@font/poppins"
                 android:paddingRight="15dp"
                 android:textStyle="bold" />
 
@@ -111,10 +112,10 @@
         android:layout_marginBottom="5dp"
         android:text="Or Sign In With"
         android:textAlignment="center"
-        android:textAllCaps="true"
         android:textColor="@color/black"
         android:textSize="15sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="@font/poppins"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -147,17 +148,36 @@
     </LinearLayout>
 
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10sp"
-        android:onClick="signup"
-        android:text="New user? \nREGISTER NOW"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        android:layout_marginTop="20sp">
 
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:layout_weight="1"
+            android:fontFamily="@font/roboto"
+            android:onClick="signup"
+            android:text="New user?"
+            android:textAlignment="textEnd"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_weight="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10sp"
+            android:onClick="signup"
+            android:text=" Sign Up"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="textStart"
+            android:textColor="@color/orange"
+            android:textSize="20sp" />
+    </LinearLayout>
     <ProgressBar
         android:id="@+id/progresBar"
         android:layout_width="30dp"
