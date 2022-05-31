@@ -1,13 +1,18 @@
 package com.example.mufta.ui.notifications;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +26,9 @@ import androidx.lifecycle.ViewModelProvider;
 import com.bumptech.glide.Glide;
 import com.example.mufta.R;
 import com.example.mufta.databinding.FragmentNotificationsBinding;
+import com.example.mufta.ui.activities.MainActivity;
+import com.example.mufta.ui.activities.signin;
+import com.example.mufta.ui.activities.signup;
 import com.example.mufta.ui.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -60,8 +68,50 @@ public class NotificationsFragment extends Fragment {
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
 
+   if(FirebaseAuth.getInstance().getCurrentUser() == null)
+   {
+       final Dialog dialog = new Dialog(getActivity());
+       dialog.setContentView(R.layout.custom_alert_profile);
+       dialog.setCancelable(false);
+       Button dialogButton = (Button) dialog.findViewById(R.id.loginbtnalert);
+       ImageView dialougebtnback = dialog.findViewById(R.id.btnback);
+       Button dialogeButtonSignup  = dialog.findViewById(R.id.signupbtnalert);
+       // if button is clicked, close the custom dialog
+       dialogButton.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               dialog.dismiss();
+               Intent intent = new Intent(getActivity(), signin.class);
+               startActivity(intent);
+               getActivity().finish();
 
-        dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
+           }
+       });
+       dialogeButtonSignup.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+               dialog.dismiss();
+               Intent intent = new Intent(getActivity(), signup.class);
+               startActivity(intent);
+               getActivity().finish();
+           }
+       });
+       dialougebtnback.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View view) {
+            //   getFragmentManager().popBackStack();
+               getParentFragmentManager().popBackStack();
+               dialog.dismiss();
+           }
+       });
+       dialog.show();
+   }
+   else
+   {
+       dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
+       getdata();
+   }
+
 
         binding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,7 +126,7 @@ public class NotificationsFragment extends Fragment {
         binding.BtnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
+                dailog = ProgressDialog.show(requireActivity(), "", "updating..", true);
                 String phonenumber = binding.numberBox.getText().toString();
                 String city = binding.cityBox.getText().toString();
                 String name = binding.nameBox.getText().toString();

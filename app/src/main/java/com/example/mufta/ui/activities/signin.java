@@ -105,6 +105,11 @@ public class signin extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+    public  void working(View view)
+    {
+        Toast.makeText(this, "We are working on it", Toast.LENGTH_SHORT).show();
+    }
+
 
     public void twit(View view) {
         c();

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradiant_white_orange"
     android:orientation="vertical"
-    tools:context=".ui.activities.signin">
+    tools:context=".ui.activities.signup">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -192,25 +192,25 @@
         android:orientation="horizontal">
 
         <ImageView
+            android:onClick="working"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="twit"
             android:src="@drawable/twit_pic" />
 
         <ImageView
+            android:onClick="working"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="face"
             android:src="@drawable/fb" />
 
         <ImageView
+            android:onClick="working"
             android:id="@+id/gsignin"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:onClick="googl"
             android:src="@drawable/googleg_standard_color_18" />
     </LinearLayout>
 
@@ -228,7 +228,7 @@
             android:layout_marginTop="10sp"
             android:layout_weight="1"
             android:fontFamily="@font/roboto"
-            android:onClick="signup"
+            android:onClick="signin"
             android:text="Already have an account? "
             android:textAlignment="textEnd"
             android:textColor="@color/black"
@@ -238,7 +238,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10sp"
-            android:onClick="signup"
+            android:onClick="signin"
             android:text=" Sign in"
             android:fontFamily="@font/roboto"
             android:textAlignment="textStart"
