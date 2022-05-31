@@ -57,19 +57,25 @@ public class signin extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+
                 String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    inputEmail.setError("Email cannot be empty");
+                      return;
+                }
+                if (!email.matches(emailPattern)) {
+                    inputEmail.setError("Invalid email address");
                     return;
                 }
-
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
-                    return;
+                    inputPassword.setError("Password cannot be empty");
+                        return;
                 }
-
                 progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate user
@@ -109,21 +115,13 @@ public class signin extends AppCompatActivity {
     {
         Toast.makeText(this, "We are working on it", Toast.LENGTH_SHORT).show();
     }
+    public void skip(View view)
+    {
+        Intent intent = new Intent(signin.this,MainActivity.class);
+        startActivity(intent);
+        finish();
 
-
-    public void twit(View view) {
-        c();
     }
 
-    public void face(View view) {
-        c();
-    }
 
-    public void googl(View view) {
-        c();
-    }
-
-    public void c() {
-        Toast.makeText(this, "We are working on it", Toast.LENGTH_SHORT).show();
-    }
 }

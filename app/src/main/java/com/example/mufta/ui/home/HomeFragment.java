@@ -59,7 +59,6 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 s1 = binding.edtSearch.getSelectedItem().toString();
                 spinnerLastPosition = binding.edtSearch.getSelectedItemPosition();
-                Toast.makeText(mcontext, "City is Changed", Toast.LENGTH_SHORT).show();
                 editor.putString("resId", s1);
                 editor.putInt("spinnerLastPositionSaved",spinnerLastPosition);
                 editor.apply();
@@ -93,11 +92,11 @@ public class HomeFragment extends Fragment implements CoursesItemClickListener {
 
         homeClasses = new ArrayList<>();
 
-        homeClasses.add(new homeClass(1, R.drawable.education, "Education discounts", "19 discounts"));
-        homeClasses.add(new homeClass(2, R.drawable.food, "Food discounts", "14 discounts"));
-        homeClasses.add(new homeClass(3, R.drawable.lifestyle, "Lifestyle discounts", "24 discounts"));
-        homeClasses.add(new homeClass(4, R.drawable.clothing, "Clothing discounts", "18 discounts"));
-        homeClasses.add(new homeClass(5, R.drawable.events, "Event Discounts", "21 discounts"));
+        homeClasses.add(new homeClass(1, R.drawable.education, "Education discounts", "5034 discounts"));
+        homeClasses.add(new homeClass(2, R.drawable.food, "Food \ndiscounts", "1620 discounts"));
+        homeClasses.add(new homeClass(3, R.drawable.lifestyle, "Lifestyle discounts", "98 discounts"));
+        homeClasses.add(new homeClass(4, R.drawable.clothing, "Clothing discounts", "127 discounts"));
+        homeClasses.add(new homeClass(5, R.drawable.events, "Event \nDiscounts", "20 discounts"));
         homeClasses.add(new homeClass(6, R.drawable.travelling, "Travelling discounts", "10 discounts"));
 
         adapter = new CourseRecyclerAdapter(mcontext, homeClasses, this);

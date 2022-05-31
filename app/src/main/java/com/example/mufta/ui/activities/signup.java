@@ -24,7 +24,7 @@ import java.util.Objects;
 
 public class signup extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword, name;
+    private EditText inputEmail, inputPassword, name,inputCPassowrd;
     ProgressBar progressBar;
     FirebaseAuth auth;
     TextView skip;
@@ -41,6 +41,7 @@ public class signup extends AppCompatActivity {
         Button btnSignUp = (Button) findViewById(R.id.signup);
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
+        inputCPassowrd = findViewById(R.id.Cpassword);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         name = (EditText) findViewById(R.id.eded);
         skip = findViewById(R.id.skipp);
@@ -57,28 +58,35 @@ public class signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                 String email = inputEmail.getText().toString();
                 String username = name.getText().toString();
-                if (username.isEmpty()) {
-                    name.setError("Please type a name");
-                    return;
-                }
-
                 String password = inputPassword.getText().toString();
+                String cpassword = inputCPassowrd.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                if (username.isEmpty()) {
+                    name.setError("name can't be empty");
                     return;
                 }
-
+                if (TextUtils.isEmpty(email)) {
+                   inputEmail.setError("Email can't be empty");
+                        return;
+                }
+                if (!email.matches(emailPattern)) {
+                    inputEmail.setError("Invalid email address");
+                    return;
+                }
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    inputPassword.setError("Password can't be empty");
                     return;
                 }
 
                 if (password.length() < 6) {
-                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                   inputPassword.setError("Password is too short");
                     return;
+                }
+                if (password.equals(cpassword)) {
+                    Toast.makeText(signup.this, "Password doesn't match", Toast.LENGTH_SHORT).show();
                 }
 
                 progressBar.setVisibility(View.VISIBLE);

@@ -70,22 +70,6 @@
                 android:textSize="20sp"
                 android:textStyle="bold"></TextView>
 
-
-            <EditText
-                android:layout_weight="10"
-                android:id="@+id/email"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginBottom="5dp"
-                android:hint="muftainfo@gmail.com"
-                android:fontFamily="@font/poppins"
-                android:inputType="textEmailAddress"
-                android:padding="10dp"
-                android:textSize="15sp"
-                android:backgroundTint="@color/orange"/>
             <EditText
                 android:id="@+id/eded"
                 android:layout_weight="10"
@@ -101,6 +85,22 @@
                 android:padding="10dp"
                 android:textSize="15sp"
                 android:backgroundTint="@color/orange"/>
+            <EditText
+                android:layout_weight="10"
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="5dp"
+                android:hint="muftainfo@gmail.com"
+                android:fontFamily="@font/poppins"
+                android:inputType="textEmailAddress"
+                android:padding="10dp"
+                android:textSize="15sp"
+                android:backgroundTint="@color/orange"/>
+
 
 
             <EditText
@@ -120,7 +120,7 @@
                 android:textSize="15sp" />
             <EditText
                 android:backgroundTint="@color/orange"
-                android:id="@+id/Cpasword"
+                android:id="@+id/Cpassword"
                 android:layout_weight="10"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
