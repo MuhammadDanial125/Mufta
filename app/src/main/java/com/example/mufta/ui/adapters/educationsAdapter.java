@@ -49,7 +49,7 @@ public class educationsAdapter extends RecyclerView.Adapter<educationsAdapter.Vi
         holder.elanguage.setText("" + eclass.getLanguage());
         holder.ediscountedprice.setText("0.00$");
         holder.ewebsitename.setText("" + eclass.getWebsitename());
-        holder.eorignalprice.setText("" + eclass.getOriginalprice()+".00$");
+        holder.eorignalprice.setText("" + eclass.getOriginalprice() + ".00$");
         holder.etime.setText("" + eclass.getTimeduration());
         holder.eexpires.setText("" + eclass.getExpirydate());
         holder.eorignalprice.setPaintFlags(holder.eorignalprice.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);

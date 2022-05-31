@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,57 +62,58 @@ public class NotificationsFragment extends Fragment {
         NotificationsViewModel notificationsViewModel = new ViewModelProvider(this).get(NotificationsViewModel.class);
         binding = FragmentNotificationsBinding.inflate(inflater, container, false);
 
+        getdata();
 
-//        Bundle bundle = getIntent().getExtras();
-//        String key = bundle.getString("key");
         database = FirebaseDatabase.getInstance();
         storage = FirebaseStorage.getInstance();
         auth = FirebaseAuth.getInstance();
+        if (FirebaseAuth.getInstance().getCurrentUser() == null) {
+            final Dialog dialog = new Dialog(getActivity());
+            dialog.setContentView(R.layout.custom_alert_profile);
+            dialog.setCancelable(false);
+            Button dialogButton = (Button) dialog.findViewById(R.id.loginbtnalert);
+            ImageView dialougebtnback = dialog.findViewById(R.id.btnback);
+            Button dialogeButtonSignup = dialog.findViewById(R.id.signupbtnalert);
+            // if button is clicked, close the custom dialog
+            dialogButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dialog.dismiss();
+                    Intent intent = new Intent(getActivity(), signin.class);
+                    startActivity(intent);
+                    getActivity().finish();
 
-   if(FirebaseAuth.getInstance().getCurrentUser() == null)
-   {
-       final Dialog dialog = new Dialog(getActivity());
-       dialog.setContentView(R.layout.custom_alert_profile);
-       dialog.setCancelable(false);
-       Button dialogButton = (Button) dialog.findViewById(R.id.loginbtnalert);
-       ImageView dialougebtnback = dialog.findViewById(R.id.btnback);
-       Button dialogeButtonSignup  = dialog.findViewById(R.id.signupbtnalert);
-       // if button is clicked, close the custom dialog
-       dialogButton.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               dialog.dismiss();
-               Intent intent = new Intent(getActivity(), signin.class);
-               startActivity(intent);
-               getActivity().finish();
+                }
+            });
+            dialogeButtonSignup.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    dialog.dismiss();
+                    Intent intent = new Intent(getActivity(), signup.class);
+                    startActivity(intent);
+                    getActivity().finish();
+                }
+            });
+            dialougebtnback.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //   getFragmentManager().popBackStack();
+                    getParentFragmentManager().popBackStack();
+                    dialog.dismiss();
+                }
+            });
+            dialog.show();
+        } else {
+            dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
+            getdata();
+        }
 
-           }
-       });
-       dialogeButtonSignup.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-               dialog.dismiss();
-               Intent intent = new Intent(getActivity(), signup.class);
-               startActivity(intent);
-               getActivity().finish();
-           }
-       });
-       dialougebtnback.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View view) {
-            //   getFragmentManager().popBackStack();
-               getParentFragmentManager().popBackStack();
-               dialog.dismiss();
-           }
-       });
-       dialog.show();
-   }
-   else
-   {
-       dailog = ProgressDialog.show(requireActivity(), "", "Loading..", true);
-       getdata();
-   }
-
+        binding.edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                clickable();
+            }
+        });
 
         binding.imageView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -126,7 +128,6 @@ public class NotificationsFragment extends Fragment {
         binding.BtnContinue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dailog = ProgressDialog.show(requireActivity(), "", "updating..", true);
                 String phonenumber = binding.numberBox.getText().toString();
                 String city = binding.cityBox.getText().toString();
                 String name = binding.nameBox.getText().toString();
@@ -140,6 +141,7 @@ public class NotificationsFragment extends Fragment {
                     return;
                 }
                 if (selectedImage != null) {
+                    dailog = ProgressDialog.show(requireActivity(), "", "updating..", true);
                     StorageReference reference = storage.getReference().child("Profiles");
                     reference.putFile(selectedImage).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
                         @Override
@@ -154,7 +156,7 @@ public class NotificationsFragment extends Fragment {
                                         String name = binding.nameBox.getText().toString();
                                         String phonenumber = binding.numberBox.getText().toString();
                                         String city = binding.cityBox.getText().toString();
-                                        User user = new User( name, email, imageUrl, phonenumber, city);
+                                        User user = new User(name, email, imageUrl, phonenumber, city);
                                         database.getReference()
                                                 .child("users")
                                                 .child(uid)
@@ -175,7 +177,7 @@ public class NotificationsFragment extends Fragment {
                     String uid = auth.getUid();
                     String email = auth.getCurrentUser().getEmail();
 
-                    User user = new User( name, email, "No Image", phonenumber, city);
+                    User user = new User(name, email, "No Image", phonenumber, city);
 
                     database.getReference()
                             .child("users")
@@ -213,8 +215,8 @@ public class NotificationsFragment extends Fragment {
                     Glide.with(NotificationsFragment.this).load(user.profileImage)
                             .placeholder(R.drawable.avatar)
                             .into(binding.imageView);
-                    dailog.dismiss();
                 }
+                dailog.dismiss();
             }
 
             @Override
@@ -246,11 +248,11 @@ public class NotificationsFragment extends Fragment {
                                     database.getReference().child("users")
                                             .child(Objects.requireNonNull(FirebaseAuth.getInstance().getUid()))
                                             .updateChildren(obj).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                        @Override
-                                        public void onSuccess(Void aVoid) {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
 
-                                        }
-                                    });
+                                                }
+                                            });
                                 }
                             });
                         }
@@ -260,6 +262,21 @@ public class NotificationsFragment extends Fragment {
                 selectedImage = data.getData();
             }
         }
+    }
+
+
+
+    public void clickable() {
+        Toast.makeText(getActivity(), "working", Toast.LENGTH_SHORT).show();
+        binding.nameBox.setInputType(InputType.TYPE_TEXT_VARIATION_PERSON_NAME);
+        binding.nameBox.setEnabled(true);
+        binding.emailBox.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        binding.emailBox.setEnabled(true);
+        binding.numberBox.setInputType(InputType.TYPE_CLASS_PHONE);
+        binding.numberBox.setEnabled(true);
+        binding.cityBox.setInputType(InputType.TYPE_CLASS_TEXT);
+        binding.cityBox.setEnabled(true);
+
     }
 
     @Override

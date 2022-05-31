@@ -153,17 +153,16 @@
 
     </array>
     <array name="categories">
-        <item>Business</item>
-        <item>Personal Development</item>
-        <item>Finance &amp; Accounting</item>
-        <item>IT &amp; Software</item>
-        <item>Health &amp; Fitness</item>
-        <item>Office Productivity</item>
-        <item>Development</item>
-        <item>Design</item>
+        <item>All</item>
+        <item>Business &amp; finance</item>
+        <item>Personal development</item>
+        <item>IT &amp; software</item>
+        <item>Health &amp; fitness</item>
+        <item>Office productivity</item>
+        <item>Design &amp; tools</item>
         <item>Photography &amp; Video</item>
         <item>Teaching &amp; Academics</item>
         <item>Lifestyle</item>
-        <item>Music</item>
+        <item>Others</item>
     </array>
 </resources>

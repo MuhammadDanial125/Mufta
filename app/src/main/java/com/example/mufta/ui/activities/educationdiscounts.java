@@ -13,6 +13,7 @@ import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -39,8 +40,10 @@ public class educationdiscounts extends AppCompatActivity {
     RecyclerView RvEducation;
     Query query;
     Spinner spinner;
-    String string;
+    String category ="All" ;
     ProgressDialog dailog;
+    int spinnerLPos;
+    boolean isSpinnerInitial = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,8 +63,30 @@ public class educationdiscounts extends AppCompatActivity {
         RvEducation.setHasFixedSize(true);
         query = FirebaseDatabase.getInstance().getReference().child("Discounts").child("Education");
         query.addListenerForSingleValueEvent(valueEventListener);
-        string = spinner.getSelectedItem().toString();
+        spinner.setSelection(spinnerLPos);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+                if(isSpinnerInitial){ // for stoping oncreate trigger
+                    category = spinner.getSelectedItem().toString();
+                    spinnerLPos = spinner.getSelectedItemPosition();
+                    dailog = ProgressDialog.show(educationdiscounts.this, "", "Loading..", true);
+                    dailog.setCancelable(true);
+                    query = FirebaseDatabase.getInstance().getReference().child("Discounts").child("Education");
+                    query.addListenerForSingleValueEvent(valueEventListener);
+                }else
+                    isSpinnerInitial=true;
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
     }
+
 
     ValueEventListener valueEventListener = new ValueEventListener() {
         @SuppressLint("NotifyDataSetChanged")
@@ -71,9 +96,21 @@ public class educationdiscounts extends AppCompatActivity {
             if (snapshot.exists()) {
                 for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     educationClass educlass = snapshot1.getValue(educationClass.class);
-                    educationList.add(educlass);
+                    if(educlass.getCoursetitle().equals(category))
+                    {
+                        educationList.add(educlass);
+                    }
+                    if(category.equals("All"))
+                    {
+                        educationList.add(educlass);
+                    }
                     dailog.dismiss();
                 }
+                if (educationList.isEmpty())
+                {
+                    Toast.makeText(educationdiscounts.this, "No Course is available in this category", Toast.LENGTH_SHORT).show();
+                }
+
                 eadapter.notifyDataSetChanged();
             }
         }
